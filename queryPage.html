@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Query</title>	
+    <link rel="stylesheet" href="https://w1824056.users.ecs.westminster.ac.uk/webDev/coursework/style.css"><!-- links the stylesheet -->
+
+<script>
+    function checkForm()// <!-- creates a form to check if the form was filled or not -->
+    {
+        let checkName = document.getElementById("name").value;
+        let checkEmail = document.getElementById("email").value;
+        let checkSubject = document.getElementById("subject").value;
+        let checkMessage = document.getElementById("message").value;
+		// <!-- gets the forms values and polaces it into varaibles -->
+
+        if(checkName == "") {//<!-- checks to see if name was filled in -->
+            alert("Please Enter Your Name");
+        } else if(checkEmail == ""){//<!-- checks to see if email was filled in -->
+            alert("Please Enter Your Email");
+        } else if(checkSubject == ""){//<!-- checks to see if subject was filled in -->
+            alert("Please Enter Your Subject");
+        } else if(checkMessage == ""){//<!-- checks to see if the message was filled in -->
+            alert("Please Enter Your Message");
+        } else{// <!-- if the form is all filled in it takes you to the popup function -->
+            togglePopup()// <!-- calls the popup function -->
+            return true
+        }
+    }
+    function togglePopup(){
+        document.getElementById("popupID").classList.toggle("active");// <!-- csets the popup to active to show the popup for the check query button -->
+        let formName = document.getElementById("name").value;
+        let formEmail = document.getElementById("email").value;
+        let formSubject = document.getElementById("subject").value;
+        let formMessage = document.getElementById("message").value;
+		// <!-- gets the forms values and polaces it into varaibles -->
+
+        let querySummary = "Name: " + formName + "<br/>";
+        querySummary += "Email: " + formEmail + "<br/>";
+        querySummary += "Subject: " + formSubject + "<br/>";
+        querySummary += "Message: " + formMessage + "<br/>";
+        document.getElementById("querySummary").innerHTML = querySummary;// <!-- replaces the div with the id invoice to output the summary of the form -->
+		// <!-- puts all the forms data into a variabe to be checked before its sent.-->
+        return;
+    }
+</script>
+</head>
+
+<body class="queryBody">
+
+    <header>
+        <div class="container"><!-- nav bar -->
+            <a href="https://w1824056.users.ecs.westminster.ac.uk/webDev/coursework/homePage.html"><img src="https://w1824056.users.ecs.westminster.ac.uk/webDev/coursework/logo.png" alt="logo" class="logo"></a>
+            <nav>
+                <ul>
+                        <li><a href="https://w1812630.users.ecs.westminster.ac.uk/coursework/products_page.html">Buy Products</a></li>
+                        <li><a href="https://w1824056.users.ecs.westminster.ac.uk/webDev/coursework/Abdullah/thumbnailImage.html">Thumbnail</a></li>
+			<li><a href="https://w1824056.users.ecs.westminster.ac.uk/webDev/coursework/Abdullah/Diagram.html">Diagram</a></li>
+                        <li><a href="https://w1824056.users.ecs.westminster.ac.uk/webDev/coursework/queryPage.html">Query Form</a></li>
+                    </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="queryPage"><!-- start of the form -->
+        <form>
+            <h3>GET IN TOUCH</h3>
+            <input type="text" id="name" placeholder="Your Name"><!-- input for name -->
+            <input type="email" id="email" placeholder="Your Email">
+            <select name="subject" id="subject">
+                <option value="Please Choose An Option">Please Choose An Option</option><!-- a select for options for the subject -->
+                <option value="Delivery">Delivery</option>
+                <option value="Prices">Prices</option>
+                <option value="Other">Other</option>
+            </select>
+            <textarea id="message" rows="4" placeholder="Your Query Here"></textarea><!-- input for the message -->
+            <div class="">
+                <button type ="button" onclick="checkForm()" value="Submit">Check Query</button><!-- when the button is clicked it will take you to check if the form is cilcked -->
+            </div>
+        </form>
+    </div>
+    
+
+    <div class="popup" id="popupID"><!-- popup for the check query this is hidden and on the button press the css activates it and shows up -->
+        <div class="overlay"></div>
+        <div class="content">
+            <h1 class="popupTitle">Your Query</h1>
+            <div class= "querySummary" id="querySummary"></div><!-- this is where the form summary is shown, through inner html the text here is replaced -->
+            <button class="closeBtn" onclick="togglePopup()">Edit</button><!-- this edit button hides the popup and shows the form to make any edits -->
+            <button class="closeBtn">Send</button><!-- the sedn button shouldve sent an email but i didnt have anough time and was unable to make this work. -->
+            
+        </div>
+    </div>
+
+</body>
+</html>
